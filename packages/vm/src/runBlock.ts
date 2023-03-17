@@ -1,8 +1,15 @@
-import { Block } from '@ethereumjs/block'
-import { ConsensusType, Hardfork } from '@ethereumjs/common'
-import { RLP } from '@ethereumjs/rlp'
-import { Trie } from '@ethereumjs/trie'
-import { Account, Address, bigIntToBuffer, bufArrToArr, intToBuffer, short } from '@ethereumjs/util'
+import { Block } from '@nomicfoundation/ethereumjs-block'
+import { ConsensusType, Hardfork } from '@nomicfoundation/ethereumjs-common'
+import { RLP } from '@nomicfoundation/ethereumjs-rlp'
+import { Trie } from '@nomicfoundation/ethereumjs-trie'
+import {
+  Account,
+  Address,
+  bigIntToBuffer,
+  bufArrToArr,
+  intToBuffer,
+  short,
+} from '@nomicfoundation/ethereumjs-util'
 import { debug as createDebugLogger } from 'debug'
 
 import { Bloom } from './bloom'
@@ -17,7 +24,7 @@ import type {
   TxReceipt,
 } from './types'
 import type { VM } from './vm'
-import type { EVMStateAccess } from '@ethereumjs/evm'
+import type { EVMStateAccess } from '@nomicfoundation/ethereumjs-evm'
 
 const debug = createDebugLogger('vm:block')
 

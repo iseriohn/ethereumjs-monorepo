@@ -1,11 +1,11 @@
-import { Chain, Common, Hardfork } from '@ethereumjs/common'
-import { ripemdPrecompileAddress } from '@ethereumjs/evm/dist/precompiles'
-import { Account, Address, toBuffer } from '@ethereumjs/util'
+import { Chain, Common, Hardfork } from '@nomicfoundation/ethereumjs-common'
+import { ripemdPrecompileAddress } from '@nomicfoundation/ethereumjs-evm/dist/precompiles'
+import { Account, Address, toBuffer } from '@nomicfoundation/ethereumjs-util'
 import { debug as createDebugLogger } from 'debug'
 
-import type { EVMStateAccess } from '@ethereumjs/evm/dist/types'
-import type { AccountFields, StateManager } from '@ethereumjs/statemanager'
-import type { AccessList, AccessListItem } from '@ethereumjs/tx'
+import type { EVMStateAccess } from '@nomicfoundation/ethereumjs-evm/dist/types'
+import type { AccountFields, StateManager } from '@nomicfoundation/ethereumjs-statemanager'
+import type { AccessList, AccessListItem } from '@nomicfoundation/ethereumjs-tx'
 import type { Debugger } from 'debug'
 
 type AddressHex = string
@@ -133,7 +133,7 @@ export class VmState implements EVMStateAccess {
   }
 
   async getAccount(address: Address): Promise<Account> {
-    return await this._stateManager.getAccount(address)
+    return this._stateManager.getAccount(address)
   }
 
   async putAccount(address: Address, account: Account): Promise<void> {
@@ -155,15 +155,15 @@ export class VmState implements EVMStateAccess {
   }
 
   async getContractCode(address: Address): Promise<Buffer> {
-    return await this._stateManager.getContractCode(address)
+    return this._stateManager.getContractCode(address)
   }
 
   async putContractCode(address: Address, value: Buffer): Promise<void> {
-    return await this._stateManager.putContractCode(address, value)
+    return this._stateManager.putContractCode(address, value)
   }
 
   async getContractStorage(address: Address, key: Buffer): Promise<Buffer> {
-    return await this._stateManager.getContractStorage(address, key)
+    return this._stateManager.getContractStorage(address, key)
   }
 
   async putContractStorage(address: Address, key: Buffer, value: Buffer) {
@@ -177,22 +177,22 @@ export class VmState implements EVMStateAccess {
   }
 
   async accountExists(address: Address): Promise<boolean> {
-    return await this._stateManager.accountExists(address)
+    return this._stateManager.accountExists(address)
   }
 
   async setStateRoot(stateRoot: Buffer): Promise<void> {
     if (this._checkpointCount !== 0) {
       throw new Error('Cannot set state root with uncommitted checkpoints')
     }
-    return await this._stateManager.setStateRoot(stateRoot)
+    return this._stateManager.setStateRoot(stateRoot)
   }
 
   async getStateRoot(): Promise<Buffer> {
-    return await this._stateManager.getStateRoot()
+    return this._stateManager.getStateRoot()
   }
 
   async hasStateRoot(root: Buffer): Promise<boolean> {
-    return await this._stateManager.hasStateRoot(root)
+    return this._stateManager.hasStateRoot(root)
   }
 
   /**
@@ -426,7 +426,7 @@ export class VmState implements EVMStateAccess {
    * @param addressesRemoved - List of addresses to be removed from the final list
    * @param addressesOnlyStorage - List of addresses only to be added in case of present storage slots
    *
-   * @returns - an [@ethereumjs/tx](https://github.com/ethereumjs/ethereumjs-monorepo/packages/tx) `AccessList`
+   * @returns - an [@nomicfoundation/ethereumjs-tx](https://github.com/ethereumjs/ethereumjs-monorepo/packages/tx) `AccessList`
    */
   generateAccessList(
     addressesRemoved: Address[] = [],

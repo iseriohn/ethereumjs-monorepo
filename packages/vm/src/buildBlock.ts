@@ -1,16 +1,16 @@
-import { Block } from '@ethereumjs/block'
-import { ConsensusType } from '@ethereumjs/common'
-import { RLP } from '@ethereumjs/rlp'
-import { Trie } from '@ethereumjs/trie'
-import { Address, TypeOutput, toBuffer, toType } from '@ethereumjs/util'
+import { Block } from '@nomicfoundation/ethereumjs-block'
+import { ConsensusType } from '@nomicfoundation/ethereumjs-common'
+import { RLP } from '@nomicfoundation/ethereumjs-rlp'
+import { Trie } from '@nomicfoundation/ethereumjs-trie'
+import { Address, TypeOutput, toBuffer, toType } from '@nomicfoundation/ethereumjs-util'
 
 import { Bloom } from './bloom'
 import { calculateMinerReward, encodeReceipt, rewardAccount } from './runBlock'
 
 import type { BuildBlockOpts, BuilderOpts, RunTxResult, SealBlockOpts } from './types'
 import type { VM } from './vm'
-import type { HeaderData } from '@ethereumjs/block'
-import type { TypedTransaction } from '@ethereumjs/tx'
+import type { HeaderData } from '@nomicfoundation/ethereumjs-block'
+import type { TypedTransaction } from '@nomicfoundation/ethereumjs-tx'
 
 export class BlockBuilder {
   /**
@@ -172,6 +172,7 @@ export class BlockBuilder {
    * as the signer will be awarded the txs amount spent on gas as they are added.
    */
   async build(sealOpts?: SealBlockOpts) {
+    console.log('hi building block===============')
     this.checkStatus()
     const blockOpts = this.blockOpts
     const consensusType = this.vm._common.consensusType()
