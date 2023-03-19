@@ -1,5 +1,5 @@
-import { ConsensusAlgorithm } from '@ethereumjs/common'
-import { MAX_UINT64, bigIntToHex, bufferToBigInt, intToHex } from '@ethereumjs/util'
+import { ConsensusAlgorithm } from '@nomicfoundation/ethereumjs-common'
+import { MAX_UINT64, bigIntToHex, bufferToBigInt, intToHex } from '@nomicfoundation/ethereumjs-util'
 import { debug as createDebugLogger } from 'debug'
 
 import { EOF } from './eof'
@@ -12,8 +12,8 @@ import { Stack } from './stack'
 import type { EVM, EVMResult } from './evm'
 import type { AsyncOpHandler, OpHandler, Opcode } from './opcodes'
 import type { Block, EEIInterface, Log } from './types'
-import type { Common } from '@ethereumjs/common'
-import type { Account, Address } from '@ethereumjs/util'
+import type { Common } from '@nomicfoundation/ethereumjs-common'
+import type { Account, Address } from '@nomicfoundation/ethereumjs-util'
 
 const debugGas = createDebugLogger('evm:eei:gas')
 
@@ -248,7 +248,9 @@ export class Interpreter {
     if (this._evm.events.listenerCount('step') > 0 || this._evm.DEBUG) {
       // Only run this stepHook function if there is an event listener (e.g. test runner)
       // or if the vm is running in debug mode (to display opcode debug logs)
-      await this._runStepHook(gas, gasLimitClone)
+      /** Speed up
+        await this._runStepHook(gas, gasLimitClone)
+      */
     }
 
     // Check for invalid opcode

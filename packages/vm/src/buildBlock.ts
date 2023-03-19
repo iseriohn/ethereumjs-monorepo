@@ -172,7 +172,6 @@ export class BlockBuilder {
    * as the signer will be awarded the txs amount spent on gas as they are added.
    */
   async build(sealOpts?: SealBlockOpts) {
-    console.log('hi building block===============')
     this.checkStatus()
     const blockOpts = this.blockOpts
     const consensusType = this.vm._common.consensusType()
@@ -182,8 +181,8 @@ export class BlockBuilder {
     }
 
     const stateRoot = await this.vm.stateManager.getStateRoot()
-    const transactionsTrie = await this.transactionsTrie()
-    const receiptTrie = await this.receiptTrie()
+    const transactionsTrie = undefined //await this.transactionsTrie()
+    const receiptTrie = undefined //await this.receiptTrie()
     const logsBloom = this.logsBloom()
     const gasUsed = this.gasUsed
     const timestamp = this.headerData.timestamp ?? Math.round(Date.now() / 1000)
@@ -206,9 +205,11 @@ export class BlockBuilder {
     const blockData = { header: headerData, transactions: this.transactions }
     const block = Block.fromBlockData(blockData, blockOpts)
 
+    /** Speeding up
     if (this.blockOpts.putBlockIntoBlockchain === true) {
       await this.vm.blockchain.putBlock(block)
     }
+*/
 
     this.built = true
     if (this.checkpointed) {

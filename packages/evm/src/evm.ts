@@ -1,4 +1,4 @@
-import { Chain, Common, Hardfork } from '@ethereumjs/common'
+import { Chain, Common, Hardfork } from '@nomicfoundation/ethereumjs-common'
 import {
   Address,
   KECCAK256_NULL,
@@ -8,7 +8,7 @@ import {
   generateAddress2,
   short,
   zeros,
-} from '@ethereumjs/util'
+} from '@nomicfoundation/ethereumjs-util'
 import AsyncEventEmitter = require('async-eventemitter')
 import { debug as createDebugLogger } from 'debug'
 import { promisify } from 'util'
@@ -38,7 +38,7 @@ import type {
   /*ExternalInterfaceFactory,*/
   Log,
 } from './types'
-import type { Account } from '@ethereumjs/util'
+import type { Account } from '@nomicfoundation/ethereumjs-util'
 
 const debug = createDebugLogger('evm')
 const debugGas = createDebugLogger('evm:gas')
