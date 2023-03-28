@@ -1,5 +1,5 @@
 {
-  "name": "@nomicfoundation/ethereumjs-vm",
+  "name": "@ethereumjs/vm",
   "version": "6.4.2",
   "description": "An Ethereum VM implementation",
   "keywords": [
