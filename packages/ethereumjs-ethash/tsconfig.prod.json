@@ -1,0 +1,15 @@
+{
+  "extends": "../../config/tsconfig.prod.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "lib": ["dom"],
+    "composite": true
+  },
+  "include": ["src/**/*.ts"],
+  "references": [
+    { "path": "../ethereumjs-block/tsconfig.prod.json" },
+    { "path": "../ethereumjs-rlp/tsconfig.prod.json" },
+    { "path": "../ethereumjs-util/tsconfig.prod.json" }
+  ]
+}
