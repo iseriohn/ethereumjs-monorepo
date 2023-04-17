@@ -46,7 +46,7 @@ export class BlockBuilder {
 
   private readonly vm: VM
   private blockOpts: BuilderOpts
-  private headerData: HeaderData
+  headerData: HeaderData
   private transactions: TypedTransaction[] = []
   private transactionResults: RunTxResult[] = []
   private withdrawals?: Withdrawal[]
@@ -79,6 +79,10 @@ export class BlockBuilder {
     ) {
       this.headerData.baseFeePerGas = opts.parentBlock.header.calcNextBaseFee()
     }
+  }
+
+  public setGasUsed(gasUsed: bigint) {
+    this.gasUsed = gasUsed
   }
 
   /**
