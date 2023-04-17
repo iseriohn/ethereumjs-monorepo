@@ -1,0 +1,20 @@
+{
+  "extends": "../../config/tsconfig.prod.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "composite": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.json"],
+  "references": [
+    { "path": "../ethereumjs-block/tsconfig.prod.json" },
+    { "path": "../ethereumjs-blockchain/tsconfig.prod.json" },
+    { "path": "../ethereumjs-common/tsconfig.prod.json" },
+    { "path": "../ethereumjs-evm/tsconfig.prod.json" },
+    { "path": "../ethereumjs-rlp/tsconfig.prod.json" },
+    { "path": "../ethereumjs-statemanager/tsconfig.prod.json" },
+    { "path": "../ethereumjs-trie/tsconfig.prod.json" },
+    { "path": "../ethereumjs-tx/tsconfig.prod.json" },
+    { "path": "../ethereumjs-util/tsconfig.prod.json" }
+  ]
+}
