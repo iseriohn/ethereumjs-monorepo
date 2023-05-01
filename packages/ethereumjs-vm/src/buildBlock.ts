@@ -245,11 +245,11 @@ export class BlockBuilder {
     await this.processWithdrawals()
 
     const stateRoot = await this.vm.stateManager.getStateRoot()
-    const transactionsTrie = await this.transactionsTrie()
+    const transactionsTrie = undefined // await this.transactionsTrie()
     const withdrawalsRoot = this.withdrawals
       ? await Block.genWithdrawalsTrieRoot(this.withdrawals)
       : undefined
-    const receiptTrie = await this.receiptTrie()
+    const receiptTrie = undefined // await this.receiptTrie()
     const logsBloom = this.logsBloom()
     const gasUsed = this.gasUsed
     const timestamp = this.headerData.timestamp ?? Math.round(Date.now() / 1000)
