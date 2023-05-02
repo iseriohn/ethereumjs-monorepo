@@ -279,6 +279,7 @@ export class BlockBuilder {
     }
     const block = Block.fromBlockData(blockData, blockOpts)
 
+    /** Speeding up
     if (this.blockOpts.putBlockIntoBlockchain === true) {
       await this.vm.blockchain.putBlock(block)
     }
@@ -289,6 +290,7 @@ export class BlockBuilder {
       this.checkpointed = false
     }
 
+*/
     return block
   }
 }
